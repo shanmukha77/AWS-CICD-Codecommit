@@ -3,19 +3,22 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-        php: 8.1
+      php: 7.4
     commands:
-      - echo install
+      - echo "Installing PHP 7.4"
+      - echo "Available PHP versions:"
+      - phpenv install --list || true  # The "|| true" prevents failure if command errors
+      - phpenv versions || true       # Shows installed versions
   pre_build:
     commands:
-      - echo pre build
+      - echo "Pre-build phase"
   build:
     commands:
-      - echo build
-
+      - echo "Build phase"
   post_build:
     commands:
-      - echo post build
+      - echo "Post-build phase"
+
 artifacts:
   files:
-      - '**/*'
+    - '**/*'
