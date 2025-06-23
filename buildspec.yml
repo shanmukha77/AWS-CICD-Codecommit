@@ -3,11 +3,11 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Setting up Remi repository for PHP..."
-      - sudo amazon-linux-extras enable epel
+      - echo "Installing EPEL & PHP..."
+      - sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
       - sudo yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
       - sudo yum install -y yum-utils
-      - sudo yum-config-manager --enable remi-php74  # Change to desired version (e.g., remi-php80)
+      - sudo yum-config-manager --enable remi-php74  # Change to desired PHP version (e.g., remi-php80)
       - sudo yum install -y php php-cli php-common php-mbstring php-xml
       - php -v  # Verify installed version
   pre_build:
